@@ -1,0 +1,622 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f0f2f5;
+    overflow-x: hidden;
+}
+
+.app-container {
+    max-width: 414px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+/* 페이지 전환 */
+.page {
+    min-height: 100vh;
+    transition: transform 0.3s ease;
+}
+
+.page.hidden {
+    display: none;
+}
+
+/* 상태바 */
+.status-bar {
+    background: white;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.time {
+    color: #000;
+}
+
+.indicators {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.signal-bar {
+    width: 4px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 1px;
+}
+
+.battery {
+    width: 24px;
+    height: 12px;
+    border: 1px solid #666;
+    border-radius: 2px;
+    position: relative;
+}
+
+.battery::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 6px;
+    background: #4CAF50;
+    border-radius: 1px;
+}
+
+/* 메인 페이지 스타일 */
+.main-content {
+    padding: 24px 20px 80px;
+    background: linear-gradient(135deg, #f8faff 0%, #e8f4f8 100%);
+    min-height: calc(100vh - 120px);
+}
+
+/* 헤더 */
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo {
+    font-size: 72px;
+    margin-bottom: 16px;
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.header p {
+    font-size: 16px;
+    color: #666;
+}
+
+/* 인사말 카드 */
+.greeting-card {
+    background: white;
+    border-radius: 24px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.greeting-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.greeting-icon {
+    font-size: 32px;
+    margin-right: 12px;
+}
+
+.greeting-text h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.greeting-text p {
+    color: #666;
+    font-size: 14px;
+}
+
+.greeting-message {
+    color: #444;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+/* 액션 버튼들 */
+.action-buttons {
+    margin-bottom: 32px;
+}
+
+.action-btn {
+    width: 100%;
+    background: white;
+    border: none;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.action-btn.secondary {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+}
+
+.action-btn.emergency {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+}
+
+.btn-icon {
+    font-size: 28px;
+    margin-right: 16px;
+}
+
+.btn-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.btn-subtitle {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.btn-arrow {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+/* 퀵 링크 */
+.quick-links {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.quick-links h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.quick-item {
+    background: #f8f9fa;
+    border-radius: 16px;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.quick-item:hover {
+    background: #e9ecef;
+}
+
+.quick-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.quick-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.quick-number {
+    font-size: 12px;
+    color: #2196F3;
+    font-weight: 500;
+}
+
+/* 하단 네비게이션 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 414px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: around;
+    padding: 12px 0;
+    z-index: 1000;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.nav-item.active {
+    color: #4CAF50;
+}
+
+.nav-item:not(.active) {
+    color: #999;
+}
+
+.nav-icon {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.nav-label {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* 지도 페이지 스타일 */
+.map-header {
+    background: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin-right: 16px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.header-info h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.header-info p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 지도 컨테이너 */
+.map-container {
+    height: 300px;
+    position: relative;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+.location-btn {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.location-btn:hover {
+    background: #f5f5f5;
+}
+
+/* 지도 페이지 콘텐츠 */
+.map-content {
+    padding: 20px;
+    padding-bottom: 120px;
+}
+
+/* 위치 권한 */
+.location-permission {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.permission-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.permission-icon {
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.permission-header h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #856404;
+}
+
+.location-permission p {
+    font-size: 14px;
+    color: #856404;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.permission-btn {
+    background: #ffc107;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* 센터 섹션 */
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.center-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.center-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.center-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.center-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.center-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+.center-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.center-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.center-badge.public {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.center-badge.private {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.center-info {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.center-distance {
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.center-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.center-action-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.center-action-btn.call {
+    background: #4CAF50;
+    color: white;
+}
+
+.center-action-btn.directions {
+    background: #2196F3;
+    color: white;
+}
+
+.center-action-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* 응급 버튼 */
+.emergency-floating-btn {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(244, 67, 54, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.emergency-floating-btn:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 25px rgba(244, 67, 54, 0.5);
+}
+
+/* 반응형 */
+@media (max-width: 414px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    .bottom-nav {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+}
+
+/* 로딩 상태 */
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #666;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #4CAF50;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 지도 플레이스홀더 */
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    color: #1565c0;
+}
+
+.map-placeholder-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.map-placeholder h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.map-placeholder p {
+    font-size: 14px;
+    opacity: 0.8;
+}

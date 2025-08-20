@@ -1,43 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마음건강 도우미</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- 메인 페이지 -->
+        <div id="main-page" class="page">
+            <!-- 상태바 시뮬레이션 -->
+            <div class="status-bar">
+                <span class="time">9:41</span>
+                <div class="indicators">
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="battery"></div>
+                </div>
+            </div>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+            <!-- 메인 컨텐츠 -->
+            <div class="main-content">
+                <!-- 헤더 -->
+                <div class="header">
+                    <div class="logo">🌱</div>
+                    <h1>마음건강 도우미</h1>
+                    <p>당신의 마음을 돌보는 첫걸음</p>
+                </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+                <!-- 인사말 카드 -->
+                <div class="greeting-card">
+                    <div class="greeting-header">
+                        <div class="greeting-icon">👋</div>
+                        <div class="greeting-text">
+                            <h2>안녕하세요!</h2>
+                            <p>오늘 기분은 어떠세요?</p>
+                        </div>
+                    </div>
+                    <p class="greeting-message">
+                        육아와 일상의 스트레스로 힘든 순간이 있다면, 
+                        혼자가 아니라는 것을 기억해주세요. 
+                        가까운 전문가의 도움을 받아보세요.
+                    </p>
+                </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+                <!-- 메인 액션 버튼들 -->
+                <div class="action-buttons">
+                    <button id="map-btn" class="action-btn primary">
+                        <div class="btn-content">
+                            <span class="btn-icon">🗺️</span>
+                            <div class="btn-text">
+                                <div class="btn-title">근처 정신건강센터 찾기</div>
+                                <div class="btn-subtitle">위치 기반 센터 검색</div>
+                            </div>
+                        </div>
+                        <span class="btn-arrow">→</span>
+                    </button>
+
+                    <button id="diagnosis-btn" class="action-btn secondary">
+                        <div class="btn-content">
+                            <span class="btn-icon">📝</span>
+                            <div class="btn-text">
+                                <div class="btn-title">육아우울증 자가진단</div>
+                                <div class="btn-subtitle">간단한 체크리스트</div>
+                            </div>
+                        </div>
+                        <span class="btn-arrow">→</span>
+                    </button>
+
+                    <button id="emergency-btn" class="action-btn emergency">
+                        <div class="btn-content">
+                            <span class="btn-icon">🚨</span>
+                            <div class="btn-text">
+                                <div class="btn-title">응급상황 도움받기</div>
+                                <div class="btn-subtitle">24시간 상담전화</div>
+                            </div>
+                        </div>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </div>
+
+                <!-- 퀵 링크 섹션 -->
+                <div class="quick-links">
+                    <h3>빠른 연결</h3>
+                    <div class="quick-grid">
+                        <div class="quick-item">
+                            <div class="quick-icon">📞</div>
+                            <div class="quick-title">정신건강상담</div>
+                            <div class="quick-number">1577-0199</div>
+                        </div>
+                        <div class="quick-item">
+                            <div class="quick-icon">💬</div>
+                            <div class="quick-title">생명의전화</div>
+                            <div class="quick-number">1588-9191</div>
+                        </div>
+                        <div class="quick-item">
+                            <div class="quick-icon">👶</div>
+                            <div class="quick-title">아이사랑</div>
+                            <div class="quick-number">1577-1515</div>
+                        </div>
+                        <div class="quick-item">
+                            <div class="quick-icon">🏥</div>
+                            <div class="quick-title">응급실</div>
+                            <div class="quick-number">119</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 하단 네비게이션 -->
+            <nav class="bottom-nav">
+                <button class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-label">홈</span>
+                </button>
+                <button class="nav-item" id="nav-map">
+                    <span class="nav-icon">🗺️</span>
+                    <span class="nav-label">지도</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">진단</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-label">설정</span>
+                </button>
+            </nav>
+        </div>
+
+        <!-- 지도 페이지 -->
+        <div id="map-page" class="page hidden">
+            <!-- 헤더 -->
+            <div class="map-header">
+                <button id="back-btn" class="back-btn">←</button>
+                <div class="header-info">
+                    <h1>정신건강센터 찾기</h1>
+                    <p>위치 기반 센터 검색</p>
+                </div>
+            </div>
+
+            <!-- 지도 영역 -->
+            <div id="map-container" class="map-container">
+                <div id="map" class="map"></div>
+                <button id="location-btn" class="location-btn">📍</button>
+            </div>
+
+            <!-- 위치 권한 요청 -->
+            <div class="map-content">
+                <div id="location-permission" class="location-permission">
+                    <div class="permission-header">
+                        <span class="permission-icon">📍</span>
+                        <h3>위치 권한이 필요합니다</h3>
+                    </div>
+                    <p>근처 정신건강센터를 찾기 위해 현재 위치 정보가 필요합니다.</p>
+                    <button id="allow-location-btn" class="permission-btn">위치 권한 허용하기</button>
+                </div>
+
+                <!-- 센터 목록 -->
+                <div class="center-section">
+                    <h3 class="section-title">근처 센터 (<span id="center-count">0</span>개)</h3>
+                    <div id="center-list" class="center-list">
+                        <!-- 센터 목록이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- 응급 버튼 -->
+            <button id="emergency-map-btn" class="emergency-floating-btn">
+                🚨 응급상황 도움받기
+            </button>
+
+            <!-- 하단 네비게이션 -->
+            <nav class="bottom-nav">
+                <button class="nav-item" id="nav-home">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-label">홈</span>
+                </button>
+                <button class="nav-item active">
+                    <span class="nav-icon">🗺️</span>
+                    <span class="nav-label">지도</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">진단</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-label">설정</span>
+                </button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <!-- 메인 JavaScript -->
+    <script src="index.js"></script>
+</body>
 </html>
