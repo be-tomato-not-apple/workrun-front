@@ -24,22 +24,30 @@ class MentalHealthApp {
             console.log('지도 초기화 중...');
             this.initializeMap();
             
+            console.log('이미지 에러 핸들링 설정...');
+            this.setupImageErrorHandling();
+            
             console.log('앱 초기화 완료');
         } catch (error) {
             console.error('초기화 중 오류:', error);
         }
     }
 
+    showDiagnosisPage() {
+        // 자가진단 페이지로 이동
+        alert('육아우울증 자가진단을 시작합니다.\n\n(실제 앱에서는 진단 페이지로 이동합니다)');
+    }
+
     // 이벤트 리스너 설정
     setupEventListeners() {
         try {
             // 페이지 네비게이션
-            const mapBtn = document.getElementById('map-btn');
+            const testBtn = document.getElementById('test-btn');
             const navMap = document.getElementById('nav-map');
             const backBtn = document.getElementById('back-btn');
             const navHome = document.getElementById('nav-home');
 
-            if (mapBtn) mapBtn.addEventListener('click', () => this.showMapPage());
+            if (testBtn) testBtn.addEventListener('click', () => this.showDiagnosisPage());
             if (navMap) navMap.addEventListener('click', () => this.showMapPage());
             if (backBtn) backBtn.addEventListener('click', () => this.showMainPage());
             if (navHome) navHome.addEventListener('click', () => this.showMainPage());
@@ -52,19 +60,38 @@ class MentalHealthApp {
             if (locationBtn) locationBtn.addEventListener('click', () => this.requestLocation());
 
             // 응급 버튼
-            const emergencyBtn = document.getElementById('emergency-btn');
             const emergencyMapBtn = document.getElementById('emergency-map-btn');
-            
-            if (emergencyBtn) emergencyBtn.addEventListener('click', () => this.handleEmergency());
             if (emergencyMapBtn) emergencyMapBtn.addEventListener('click', () => this.handleEmergency());
 
-            // 자가진단 버튼
-            const diagnosisBtn = document.getElementById('diagnosis-btn');
-            if (diagnosisBtn) diagnosisBtn.addEventListener('click', () => this.showDiagnosisPage());
+            // 검색 기능
+            const searchInput = document.querySelector('.search-input');
+            const searchBtn = document.querySelector('.search-button');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => this.handleSearch(e.target.value));
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.handleSearch(e.target.value);
+                });
+            }
+            
+            if (searchBtn) searchBtn.addEventListener('click', () => {
+                const query = searchInput?.value || '';
+                this.handleSearch(query);
+            });
 
-            // 퀵 링크 전화걸기
-            document.querySelectorAll('.quick-item').forEach(item => {
-                item.addEventListener('click', (e) => this.handleQuickCall(e));
+            // 필터 버튼들
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => this.handleFilterClick(e));
+            });
+
+            // 북마크 버튼들
+            document.querySelectorAll('.bookmark-card-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => this.handleBookmarkClick(e));
+            });
+
+            // 복지 카드 클릭
+            document.querySelectorAll('.welfare-card').forEach(card => {
+                card.addEventListener('click', (e) => this.handleWelfareCardClick(e));
             });
 
             console.log('이벤트 리스너 설정 완료');
@@ -446,13 +473,262 @@ class MentalHealthApp {
         }
     }
 
-    // 퀵 콜 처리
-    handleQuickCall(event) {
-        const numberElement = event.currentTarget.querySelector('.quick-number');
-        if (numberElement) {
-            const number = numberElement.textContent;
-            window.location.href = `tel:${number}`;
+    // 새로운 이벤트 핸들러들
+    handleSearch(query) {
+        console.log('검색어:', query);
+        // 실제 검색 기능 구현
+        if (query.trim()) {
+            this.performWelfareSearch(query);
         }
+    }
+
+    handleFilterClick(event) {
+        // 필터 버튼 활성화 토글
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        const filterType = event.target.textContent;
+        console.log('선택된 필터:', filterType);
+        
+        // 필터에 따른 복지 정보 업데이트
+        this.updateWelfareCards(filterType);
+    }
+
+    handleBookmarkClick(event) {
+        event.stopPropagation();
+        const btn = event.currentTarget;
+        
+        // 북마크 상태 토글
+        if (btn.classList.contains('active')) {
+            btn.classList.remove('active');
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            `;
+        } else {
+            btn.classList.add('active');
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" fill="currentColor"/>
+                </svg>
+            `;
+        }
+        
+        // 북마크 저장/제거 로직
+        this.toggleBookmark(btn.closest('.welfare-card'));
+    }
+
+    handleWelfareCardClick(event) {
+        // 북마크 버튼이 아닌 경우에만 카드 클릭 처리
+        if (!event.target.closest('.bookmark-card-btn')) {
+            const card = event.currentTarget;
+            const title = card.querySelector('h3').textContent;
+            console.log('선택된 복지:', title);
+            
+            // 복지 상세 페이지로 이동 또는 모달 표시
+            this.showWelfareDetails(card);
+        }
+    }
+
+    performWelfareSearch(query) {
+        // 실제 API 호출 또는 로컬 검색
+        console.log(`"${query}" 검색 중...`);
+        
+        // 로딩 상태 표시
+        const cards = document.querySelector('.welfare-cards');
+        cards.innerHTML = `
+            <div class="loading">
+                <div class="spinner"></div>
+                검색 중...
+            </div>
+        `;
+        
+        // 실제로는 API 호출 후 결과 표시
+        setTimeout(() => {
+            this.displaySearchResults(query);
+        }, 1000);
+    }
+
+    displaySearchResults(query) {
+        const cards = document.querySelector('.welfare-cards');
+        
+        // 검색 결과 표시 (실제로는 API 결과)
+        cards.innerHTML = `
+            <div class="welfare-card">
+                <div class="card-content">
+                    <h3>"${query}" 관련 복지정책</h3>
+                    <p class="card-subtitle">검색 결과입니다</p>
+                    <div class="card-tags">
+                        <span class="tag">검색결과</span>
+                        <span class="tag">맞춤형</span>
+                    </div>
+                </div>
+                <button class="bookmark-card-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        `;
+        
+        // 새로 생성된 요소들에 이벤트 리스너 다시 등록
+        this.setupCardEventListeners();
+    }
+
+    updateWelfareCards(filterType) {
+        console.log(`"${filterType}" 필터 적용 중...`);
+        
+        // 실제로는 필터에 맞는 데이터 가져오기
+        const cards = document.querySelector('.welfare-cards');
+        
+        if (filterType === '가구상황') {
+            // 가구상황 관련 복지 표시
+            this.showFamilyWelfare();
+        } else if (filterType === '관심주제') {
+            // 관심주제 관련 복지 표시
+            this.showTopicWelfare();
+        }
+    }
+
+    showFamilyWelfare() {
+        const cards = document.querySelector('.welfare-cards');
+        cards.innerHTML = `
+            <div class="welfare-card">
+                <div class="card-content">
+                    <h3>신혼부부 주택지원 프로그램</h3>
+                    <p class="card-subtitle">국토교통부</p>
+                    <div class="card-tags">
+                        <span class="tag">신혼부부</span>
+                        <span class="tag">주거지원</span>
+                        <span class="tag">저금리</span>
+                    </div>
+                </div>
+                <button class="bookmark-card-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="welfare-card">
+                <div class="card-content">
+                    <h3>육아휴직 급여 지원</h3>
+                    <p class="card-subtitle">고용노동부</p>
+                    <div class="card-tags">
+                        <span class="tag">육아</span>
+                        <span class="tag">급여지원</span>
+                        <span class="tag">부모</span>
+                    </div>
+                </div>
+                <button class="bookmark-card-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        `;
+        this.setupCardEventListeners();
+    }
+
+    showTopicWelfare() {
+        const cards = document.querySelector('.welfare-cards');
+        cards.innerHTML = `
+            <div class="welfare-card">
+                <div class="card-content">
+                    <h3>산후우울증 상담 지원</h3>
+                    <p class="card-subtitle">보건복지부</p>
+                    <div class="card-tags">
+                        <span class="tag">정신건강</span>
+                        <span class="tag">상담</span>
+                        <span class="tag">산후우울</span>
+                    </div>
+                </div>
+                <button class="bookmark-card-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+        `;
+        this.setupCardEventListeners();
+    }
+
+    setupCardEventListeners() {
+        // 새로 생성된 카드들에 이벤트 리스너 재등록
+        document.querySelectorAll('.bookmark-card-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleBookmarkClick(e));
+        });
+
+        document.querySelectorAll('.welfare-card').forEach(card => {
+            card.addEventListener('click', (e) => this.handleWelfareCardClick(e));
+        });
+    }
+
+    toggleBookmark(card) {
+        const title = card.querySelector('h3').textContent;
+        console.log('북마크 토글:', title);
+        
+        // 실제로는 로컬 스토리지나 서버에 저장
+        const bookmarks = JSON.parse(localStorage.getItem('welfare_bookmarks') || '[]');
+        const index = bookmarks.indexOf(title);
+        
+        if (index > -1) {
+            bookmarks.splice(index, 1);
+        } else {
+            bookmarks.push(title);
+        }
+        
+        localStorage.setItem('welfare_bookmarks', JSON.stringify(bookmarks));
+    }
+
+    showWelfareDetails(card) {
+        const title = card.querySelector('h3').textContent;
+        
+        // 간단한 알림으로 대체 (실제로는 상세 페이지나 모달)
+        alert(`${title}\n\n상세 정보를 확인하시겠습니까?\n\n(실제 앱에서는 상세 페이지로 이동합니다)`);
+    }
+
+    // 이미지 로드 에러 처리
+    setupImageErrorHandling() {
+        document.querySelectorAll('img').forEach(img => {
+            img.addEventListener('error', (e) => {
+                console.warn('이미지 로드 실패:', e.target.src);
+                
+                // 폴백 이미지 또는 이모지로 대체
+                if (e.target.closest('.heart-icon')) {
+                    e.target.outerHTML = '<span style="font-size: 80px;">❤️</span>';
+                } else if (e.target.closest('.document-icon')) {
+                    e.target.outerHTML = '<span style="font-size: 40px;">📄</span>';
+                } else if (e.target.classList.contains('nav-icon')) {
+                    const iconMap = {
+                        'home.svg': '🏠',
+                        'map.svg': '🗺️',
+                        'diagnosis.svg': '📝',
+                        'profile.svg': '👤'
+                    };
+                    const fileName = e.target.src.split('/').pop();
+                    e.target.outerHTML = `<span class="nav-icon">${iconMap[fileName] || '🔸'}</span>`;
+                }
+            });
+            
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+        });
+    }
+
+    // 다크모드에서 아이콘 색상 변경
+    updateIconsForTheme(isDark) {
+        const icons = document.querySelectorAll('.nav-icon img, .bookmark-btn img');
+        icons.forEach(icon => {
+            if (isDark) {
+                icon.style.filter = 'invert(1)';
+            } else {
+                icon.style.filter = '';
+            }
+        });
     }
 }
 
@@ -477,16 +753,3 @@ window.addEventListener('error', (event) => {
 window.addEventListener('unhandledrejection', (event) => {
     console.error('Promise 에러:', event.reason);
 });
-
-// PWA 지원을 위한 서비스 워커 등록 (선택사항)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW 등록 성공:', registration);
-            })
-            .catch(error => {
-                console.log('SW 등록 실패:', error);
-            });
-    });
-}

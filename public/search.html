@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복지 찾기 - 부모센터</title>
+    <!-- Pretendard 폰트 -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <link rel="stylesheet" href="search.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- 검색 페이지 -->
+        <div id="search-page" class="page">
+            <!-- 헤더 -->
+            <header class="search-header">
+                <button id="back-btn" class="back-btn">←</button>
+                <div class="header-info">
+                    <h1>내게 맞는 복지 찾기</h1>
+                    <p>나를 위한, 우리 가족을 위한 정부복지정책을 찾아드려요</p>
+                </div>
+            </header>
+
+            <!-- 검색 영역 -->
+            <div class="search-section">
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="search-input" placeholder="어떤 복지정책을 찾으시나요?" class="search-input">
+                        <button id="search-btn" class="search-button">🔍</button>
+                        <button id="clear-btn" class="clear-button hidden">✕</button>
+                    </div>
+                </div>
+
+                <!-- 카테고리 드롭다운 -->
+                <div class="category-section">
+                    <div class="dropdown-container">
+                        <select id="category-select" class="category-dropdown">
+                            <option value="">가구상황</option>
+                            <option value="disability">장애인</option>
+                            <option value="low-income">저소득</option>
+                            <option value="multicultural">다문화/탈북민</option>
+                            <option value="single-parent">한부모/조손</option>
+                        </select>
+                        
+                        <select id="interest-select" class="category-dropdown">
+                            <option value="">관심주제</option>
+                            <option value="physical-health">신체건강</option>
+                            <option value="mental-health">정신건강</option>
+                            <option value="life-support">생활지원</option>
+                            <option value="finance">서민금융</option>
+                            <option value="pregnancy">임신/출산</option>
+                            <option value="education">교육</option>
+                            <option value="culture">문화/여가</option>
+                            <option value="job">일자리</option>
+                            <option value="housing">주거</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 검색 결과 -->
+            <div class="results-section">
+                <div class="results-header">
+                    <h3 id="results-title">추천 복지정책</h3>
+                    <span id="results-count">(15개)</span>
+                </div>
+
+                <!-- 정렬 옵션 -->
+                <div class="sort-options">
+                    <select id="sort-select" class="sort-select">
+                        <option value="relevance">관련도순</option>
+                        <option value="newest">최신순</option>
+                        <option value="popular">인기순</option>
+                        <option value="deadline">마감임박순</option>
+                    </select>
+                </div>
+
+                <!-- 결과 목록 -->
+                <div id="results-list" class="results-list">
+                    <!-- 검색 결과가 여기에 동적으로 추가됩니다 -->
+                </div>
+
+                <!-- 로딩 스피너 -->
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>검색 중...</p>
+                </div>
+
+                <!-- 결과 없음 -->
+                <div id="no-results" class="no-results hidden">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>검색 결과가 없습니다</h3>
+                    <p>다른 키워드나 카테고리를 시도해보세요</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 필터 바텀시트 (모바일용) -->
+        <div id="filter-modal" class="filter-modal hidden">
+            <div class="filter-modal-content">
+                <div class="filter-modal-header">
+                    <h3>필터</h3>
+                    <button id="filter-close" class="filter-close">✕</button>
+                </div>
+                <div class="filter-modal-body">
+                    <!-- 모바일 필터 내용 -->
+                </div>
+                <div class="filter-modal-footer">
+                    <button id="filter-reset" class="filter-reset-btn">초기화</button>
+                    <button id="filter-apply" class="filter-apply-btn">적용</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 JavaScript -->
+    <script src="search.js"></script>
+</body>
+</html>

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마음건강 도우미</title>
+    <title>부모쉼터 - 마음건강 도우미</title>
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
     <link rel="stylesheet" href="index.css">
     <!-- Mapbox CSS -->
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
@@ -12,128 +13,140 @@
     <div id="app" class="app-container">
         <!-- 메인 페이지 -->
         <div id="main-page" class="page">
-            <!-- 상태바 시뮬레이션 -->
-            <div class="status-bar">
-                <span class="time">9:41</span>
-                <div class="indicators">
-                    <div class="signal-bar"></div>
-                    <div class="signal-bar"></div>
-                    <div class="signal-bar"></div>
-                    <div class="battery"></div>
+            <!-- 헤더 -->
+             
+            <main class="main-content">
+                <section class="main-section">
+            <header class="main-header">
+                <div class="header-content">
+                    <div class="logo">
+                        <span class="logo-icon">
+                            <img src="source/smallLogo.svg">
+                        </span>
+                        <span class="logo-text">
+                            <img src="source/textLogo.svg">
+                        </span>
+                    </div>
+                    <button class="bookmark-btn">
+                        <img src="source/bookMark.svg">
+                    </button>
                 </div>
-            </div>
+            </header>
 
-            <!-- 메인 컨텐츠 -->
-            <div class="main-content">
-                <!-- 헤더 -->
-                <div class="header">
-                    <div class="logo">🌱</div>
-                    <h1>마음건강 도우미</h1>
-                    <p>당신의 마음을 돌보는 첫걸음</p>
-                </div>
-
-                <!-- 인사말 카드 -->
-                <div class="greeting-card">
-                    <div class="greeting-header">
-                        <div class="greeting-icon">👋</div>
-                        <div class="greeting-text">
-                            <h2>안녕하세요!</h2>
-                            <p>오늘 기분은 어떠세요?</p>
+                <!-- 메인 메시지 섹션 -->
+                <section class="hero-section">
+                    <div class="hero-illustration">
+                        <div class="illustration-container">
+                            <!-- 하트와 문서 일러스트 -->
+                            <div class="heart-icon">
+                                <img src="source/heart.svg" alt="하트 아이콘">
+                            </div>
+                            <div class="document-icon">
+                                <img src="source/cilpboard.svg" alt="문서 아이콘">
+                            </div>
                         </div>
                     </div>
-                    <p class="greeting-message">
-                        육아와 일상의 스트레스로 힘든 순간이 있다면, 
-                        혼자가 아니라는 것을 기억해주세요. 
-                        가까운 전문가의 도움을 받아보세요.
-                    </p>
-                </div>
+                    
+                    <div class="hero-text">
+                        <h1>아이만 챙겼던 나날<br>당신의 마음은 어떤가요?</h1>
+                        <p>간단한 문항으로 지금 내 마음건강을 체크해보세요</p>
+                    </div>
 
-                <!-- 메인 액션 버튼들 -->
-                <div class="action-buttons">
-                    <button id="map-btn" class="action-btn primary">
-                        <div class="btn-content">
-                            <span class="btn-icon">🗺️</span>
-                            <div class="btn-text">
-                                <div class="btn-title">근처 정신건강센터 찾기</div>
-                                <div class="btn-subtitle">위치 기반 센터 검색</div>
-                            </div>
-                        </div>
-                        <span class="btn-arrow">→</span>
+                    <button id="test-btn" class="test-button">
+                        테스트 하러가기
                     </button>
+                </section>
+            </section>
+                <!-- 복지 찾기 섹션 -->
+                <section class="welfare-section">
+                    <div class="section-header">
+                        <h2>내게 맞는 복지 찾기</h2>
+                        <p>나를 위한, 우리 가족을 위한 정부복지정책을 찾아드려요</p>
+                    </div>
 
-                    <button id="diagnosis-btn" class="action-btn secondary">
-                        <div class="btn-content">
-                            <span class="btn-icon">📝</span>
-                            <div class="btn-text">
-                                <div class="btn-title">육아우울증 자가진단</div>
-                                <div class="btn-subtitle">간단한 체크리스트</div>
-                            </div>
-                        </div>
-                        <span class="btn-arrow">→</span>
-                    </button>
-
-                    <button id="emergency-btn" class="action-btn emergency">
-                        <div class="btn-content">
-                            <span class="btn-icon">🚨</span>
-                            <div class="btn-text">
-                                <div class="btn-title">응급상황 도움받기</div>
-                                <div class="btn-subtitle">24시간 상담전화</div>
-                            </div>
-                        </div>
-                        <span class="btn-arrow">→</span>
-                    </button>
-                </div>
-
-                <!-- 퀵 링크 섹션 -->
-                <div class="quick-links">
-                    <h3>빠른 연결</h3>
-                    <div class="quick-grid">
-                        <div class="quick-item">
-                            <div class="quick-icon">📞</div>
-                            <div class="quick-title">정신건강상담</div>
-                            <div class="quick-number">1577-0199</div>
-                        </div>
-                        <div class="quick-item">
-                            <div class="quick-icon">💬</div>
-                            <div class="quick-title">생명의전화</div>
-                            <div class="quick-number">1588-9191</div>
-                        </div>
-                        <div class="quick-item">
-                            <div class="quick-icon">👶</div>
-                            <div class="quick-title">아이사랑</div>
-                            <div class="quick-number">1577-1515</div>
-                        </div>
-                        <div class="quick-item">
-                            <div class="quick-icon">🏥</div>
-                            <div class="quick-title">응급실</div>
-                            <div class="quick-number">119</div>
+                    <!-- 검색창 -->
+                    <div class="search-container">
+                        <div class="search-input-wrapper">
+                            <input type="text" placeholder="검색어를 입력해주세요" class="search-input">
+                            <button class="search-button">
+                               <!-- <img src="assets/images/icons/search.svg" alt="검색" width="20" height="20"> --> 
+                            </button>
                         </div>
                     </div>
-                </div>
-            </div>
+
+                    <!-- 필터 버튼들 -->
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">가구상황</button>
+                        <button class="filter-btn">관심주제</button>
+                    </div>
+
+                    <!-- 복지 카드들 -->
+                    <div class="welfare-cards">
+                        <div class="welfare-card">
+                            <div class="card-content">
+                                <h3>심장질환 및 희귀난치성질환 아동청소년 지원사업</h3>
+                                <p class="card-subtitle">사회복지법인 밀알복지재단</p>
+                                
+                                <div class="card-tags">
+                                    <span class="tag">장애인</span>
+                                    <span class="tag">저소득</span>
+                                    <span class="tag">신혼부부</span>
+                                    <span class="tag">생활지원</span>
+                                </div>
+                            </div>
+                            
+                            <button class="bookmark-card-btn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" fill="currentColor"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="welfare-card">
+                            <div class="card-content">
+                                <h3>심장질환 및 희귀난치성질환 아동청소년 지원사업</h3>
+                                <p class="card-subtitle">사회복지법인 밀알복지재단</p>
+                                
+                                <div class="card-tags">
+                                    <span class="tag">장애인</span>
+                                    <span class="tag">저소득</span>
+                                    <span class="tag">신혼부부</span>
+                                    <span class="tag">생활지원</span>
+                                </div>
+                            </div>
+                            
+                            <button class="bookmark-card-btn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </main>
 
             <!-- 하단 네비게이션 -->
             <nav class="bottom-nav">
                 <button class="nav-item active">
-                    <span class="nav-icon">🏠</span>
+                    <img src="assets/images/icons/home.svg" alt="홈" class="nav-icon">
                     <span class="nav-label">홈</span>
                 </button>
                 <button class="nav-item" id="nav-map">
-                    <span class="nav-icon">🗺️</span>
-                    <span class="nav-label">지도</span>
+                    <img src="assets/images/icons/map.svg" alt="센터찾기" class="nav-icon">
+                    <span class="nav-label">센터찾기</span>
                 </button>
                 <button class="nav-item">
-                    <span class="nav-icon">📝</span>
-                    <span class="nav-label">진단</span>
+                    <img src="assets/images/icons/diagnosis.svg" alt="자가진단" class="nav-icon">
+                    <span class="nav-label">자가진단</span>
                 </button>
                 <button class="nav-item">
-                    <span class="nav-icon">⚙️</span>
-                    <span class="nav-label">설정</span>
+                    <img src="assets/images/icons/profile.svg" alt="마이페이지" class="nav-icon">
+                    <span class="nav-label">마이페이지</span>
                 </button>
             </nav>
         </div>
 
-        <!-- 지도 페이지 -->
+        <!-- 지도 페이지 (기존 유지) -->
         <div id="map-page" class="page hidden">
             <!-- 헤더 -->
             <div class="map-header">
@@ -183,15 +196,15 @@
                 </button>
                 <button class="nav-item active">
                     <span class="nav-icon">🗺️</span>
-                    <span class="nav-label">지도</span>
+                    <span class="nav-label">센터찾기</span>
                 </button>
                 <button class="nav-item">
                     <span class="nav-icon">📝</span>
-                    <span class="nav-label">진단</span>
+                    <span class="nav-label">자가진단</span>
                 </button>
                 <button class="nav-item">
-                    <span class="nav-icon">⚙️</span>
-                    <span class="nav-label">설정</span>
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-label">마이페이지</span>
                 </button>
             </nav>
         </div>
