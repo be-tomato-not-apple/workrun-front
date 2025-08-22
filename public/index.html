@@ -10,34 +10,247 @@
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+   
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+   
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- 메인 액션 버튼들 -->
+    <div class="action-buttons">
+      <button id="map-btn" class="action-btn primary">
+        <div class="btn-content">
+          <span class="btn-icon">🗺️</span>
+          <div class="btn-text">
+            <div class="btn-title">근처 정신건강센터 찾기</div>
+            <div class="btn-subtitle">위치 기반 센터 검색</div>
+          </div>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      <button id="diagnosis-btn" class="action-btn secondary">
+        <div class="btn-content">
+          <span class="btn-icon">📝</span>
+          <div class="btn-text">
+            <div class="btn-title">육아우울증 자가진단</div>
+            <div class="btn-subtitle">간단한 체크리스트</div>
+          </div>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+
+      <button id="emergency-btn" class="action-btn emergency">
+        <div class="btn-content">
+          <span class="btn-icon">🚨</span>
+          <div class="btn-text">
+            <div class="btn-title">응급상황 도움받기</div>
+            <div class="btn-subtitle">24시간 상담전화</div>
+          </div>
+        </div>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+
+    <!-- 퀵 링크 섹션 -->
+    <div class="quick-links">
+      <h3>빠른 연결</h3>
+      <div class="quick-grid">
+        <div class="quick-item">
+          <div class="quick-icon">📞</div>
+          <div class="quick-title">정신건강상담</div>
+          <div class="quick-number">1577-0199</div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon">💬</div>
+          <div class="quick-title">생명의전화</div>
+          <div class="quick-number">1588-9191</div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon">👶</div>
+          <div class="quick-title">아이사랑</div>
+          <div class="quick-number">1577-1515</div>
+        </div>
+        <div class="quick-item">
+          <div class="quick-icon">🏥</div>
+          <div class="quick-title">응급실</div>
+          <div class="quick-number">119</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 네비게이션 -->
+    <nav class="bottom-nav">
+      <button class="nav-item active">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">홈</span>
+      </button>
+      <button class="nav-item" id="nav-map">
+        <span class="nav-icon">🗺️</span>
+        <span class="nav-label">지도</span>
+      </button>
+      <button id="nav-diagnosis" class="nav-item">
+        <span class="nav-icon">📝</span>
+        <span class="nav-label">진단</span>
+      </button>
+      <button class="nav-item">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">설정</span>
+      </button>
+    </nav>
+
+    <!-- 지도 페이지 -->
+    <div id="map-page" class="page hidden">
+      <!-- 헤더 -->
+      <div class="map-header">
+        <button id="back-btn" class="back-btn">←</button>
+        <div class="header-info">
+          <h1>정신건강센터 찾기</h1>
+          <p>위치 기반 센터 검색</p>
+        </div>
+      </div>
+
+      <!-- 지도 영역 -->
+      <div id="map-container" class="map-container">
+        <div id="map" class="map"></div>
+        <button id="location-btn" class="location-btn">📍</button>
+      </div>
+
+      <!-- 위치 권한 요청 -->
+      <div class="map-content">
+        <div id="location-permission" class="location-permission">
+          <div class="permission-header">
+            <span class="permission-icon">📍</span>
+            <h3>위치 권한이 필요합니다</h3>
+          </div>
+          <p>근처 정신건강센터를 찾기 위해 현재 위치 정보가 필요합니다.</p>
+          <button id="allow-location-btn" class="permission-btn">위치 권한 허용하기</button>
+        </div>
+
+        <!-- 센터 목록 -->
+        <div class="center-section">
+          <h3 class="section-title">근처 센터 (<span id="center-count">0</span>개)</h3>
+          <div id="center-list" class="center-list">
+            <!-- 센터 목록이 여기에 동적으로 추가됩니다 -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 응급 버튼 -->
+      <button id="emergency-map-btn" class="emergency-floating-btn">
+        🚨 응급상황 도움받기
+      </button>
+
+      <!-- 하단 네비게이션 -->
+      <nav class="bottom-nav">
+        <button class="nav-item" id="nav-home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">홈</span>
+        </button>
+        <button class="nav-item active">
+          <span class="nav-icon">🗺️</span>
+          <span class="nav-label">지도</span>
+        </button>
+        <button class="nav-item" id="nav-diagnosis">
+          <span class="nav-icon">📝</span>
+          <span class="nav-label">진단</span>
+        </button>
+        <button class="nav-item">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-label">설정</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- 진단 페이지 -->
+    <div id="diagnosis-page" class="page hidden">
+      <div id="diagnosis-group-1" class="diagnosis-group">
+        <div class="header-row">
+          <h4> 테스트 결과</h4>
+          <button id="close-diagnosis-btn" class="close-btn" aria-label="닫기"> x </button>
+        </div>
+        <div class="header-column">
+          <h2>내 마음의 점수</h2>
+          <div class="logo">🌤️</div>
+          <div id="diagnosis-result" class="hidden">
+            <div class="result-card" id="result-card">
+              <p id="result-message"></p>
+              <h1><strong>3점</strong></h1>
+              <h3 class="highlight-message">큰 우울 증상은 보이지 않아요!</h3>
+              <p id="message">
+                육아 과정에서 피곤하고 지치는 건 어쩔 수 없지만<br />
+                마음 건강도 체력처럼 꾸준히 돌보면 좋아요
+              </p>
+            </div>
+          </div>
+          <button id="result-retest-btn" class="action-btn small">
+            테스트 다시 하기
+          </button>
+        </div>
+      </div>
+
+      <!-- ... 진단그룹 2,3 ... -->
+           <!--테스트 결과 10~12
+
+            
+                <div id="diagnosis-group-2" class="diagnosis-group">
+                <div class="header-row">
+                    <h4>  테스트 결과</h4>
+                    <button id="close-diagnosis-btn" class="close-btn" aria-label="닫기"> x </button>
+                </div>
+                <div class="header-column">
+                    <h2>내 마음의 점수</h2>
+                    <div class="logo">☁️</div>
+                    <div id="diagnosis-result" class="hidden">
+                        <div class="result-card" id="result-card">
+                            <p id="result-message"></p>
+                            <h1><strong>9점</strong>
+                            <h3 class="highlight-message">심각하진 않지만 우울증일 가능성이 높아요</h3>  
+                            <p id="message">마음도 감기처럼 아플 수 있는 거 알고 있으신가요?<br>
+                                정신건강 또한 주기적으로 체크가 필요해요
+                            </p>  
+                        </div>
+                    </div>
+                    <button id="result-retest-btn" class="action-btn small">
+                        테스트 다시 하기
+                    </button>                    
+                </div> 
+                </div>
+
+                
+
+                <div id="diagnosis-group-3" class="diagnosis-group">
+                <div class="header-row">
+                    <h4>  테스트 결과</h4>
+                    <button id="close-diagnosis-btn" class="close-btn" aria-label="닫기"> x </button>
+                </div>
+                <div class="header-column">
+                    <h2>내 마음의 점수</h2>
+                    <div class="logo">⛈️</div>
+                    <div id="diagnosis-result" class="hidden">
+                        <div class="result-card" id="result-card">
+                            <p id="result-message"></p>
+                            <h1><strong>9점</strong>
+                            <h3 class="highlight-message">많이 힘든 상태에요! 병원을 꼭 방문해 보세요</h3>  
+                            <p id="message">전문가와의 상담은 회복의 첫걸음이에요.<br>
+                                가까운 상담센터나 병원을 꼭 방문해 보세요
+                            </p>  
+                        </div>
+                    </div>
+                    <button id="result-retest-btn" class="action-btn small">
+                        테스트 다시 하기
+                    </button>                    
+                </div> 
+                </div> -->
+    </div>
+
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <!-- 메인 JavaScript -->
+    <script src="index.js"></script>
   </body>
 </html>
