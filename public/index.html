@@ -21,10 +21,7 @@
                 <div class="header-content">
                     <div class="logo">
                         <span class="logo-icon">
-                            <img src="source/smallLogo.svg">
-                        </span>
-                        <span class="logo-text">
-                            <img src="source/textLogo.svg">
+                            <img src="source/Frame 33.svg">
                         </span>
                     </div>
                     <button class="bookmark-btn">
@@ -57,6 +54,16 @@
                     </button>
                 </section>
             </section>
+            <section class="location-consent-section">
+                <div id="location-permission" class="location-permission">
+                    <div class="permission-header">
+                        <span class="permission-icon">📍</span>
+                        <h3>위치 권한이 필요합니다</h3>
+                    </div>
+                    </section>
+                    <p>근처 정신건강센터를 찾기 위해 현재 위치 정보가 필요합니다.</p>
+                    <button id="allow-location-btn" class="permission-btn">위치 권한 허용하기</button>
+                </div>
                 <!-- 복지 찾기 섹션 -->
                 <section class="welfare-section">
                     <div class="section-header">
@@ -101,26 +108,9 @@
                                 </svg>
                             </button>
                         </div>
-
-                        <div class="welfare-card">
-                            <div class="card-content">
-                                <h3>심장질환 및 희귀난치성질환 아동청소년 지원사업</h3>
-                                <p class="card-subtitle">사회복지법인 밀알복지재단</p>
-                                
-                                <div class="card-tags">
-                                    <span class="tag">장애인</span>
-                                    <span class="tag">저소득</span>
-                                    <span class="tag">신혼부부</span>
-                                    <span class="tag">생활지원</span>
-                                </div>
-                            </div>
-                            
-                            <button class="bookmark-card-btn">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
+<!-- 더 많은 복지 보기 버튼 -->
+                    <div class="more-welfare">
+                        <button id="view-more-welfare" class="more-btn">더 많은 복지 보기 →</button>
                     </div>
                 </section>
             </main>
@@ -146,7 +136,86 @@
     </nav>
 
         </div>
+        <!--진단 페이지--> 
+        <div id="diagnosis-page" class="page hidden">
+            <!-- 진단 테스트 -->
+            <div id="diagnosis-test" class="diagnosis-group active">
+                <div class="header-row">
+                    <h4>마음건강 체크</h4>
+                    <button id="close-test-btn" class="close-btn">×</button>
+                </div>
+                
+                <div class="diagnosis-test">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    
+                    <div id="question-container">
+                        <!-- 질문들이 여기에 동적으로 추가됩니다 -->
+                    </div>
+                    
+                    <div class="test-navigation">
+                        <button id="prev-btn" class="nav-btn" disabled>이전</button>
+                        <button id="next-btn" class="nav-btn primary">다음</button>
+                    </div>
+                </div>
+            </div>
 
+            <!-- 결과 그룹 1 (0-9점) -->
+            <div id="diagnosis-group-1" class="diagnosis-group">
+                <div class="header-row">
+                    <h4>테스트 결과</h4>
+                    <button class="close-btn" onclick="showMainPage()">×</button>
+                </div>
+                <div class="header-column">
+                    <h2>내 마음의 점수</h2>
+                    <div class="logo">🌤️</div>
+                    <div class="result-card">
+                        <h1><strong id="score-1">0점</strong></h1>
+                        <h3 class="highlight-message">큰 우울 증상은 보이지 않아요!</h3>
+                        <p id="message">육아 과정에서 피곤하고 지치는 건 어쩔 수 없지만<br/>마음 건강도 체력처럼 꾸준히 돌보면 좋아요</p>
+                    </div>
+                    <button class="action-btn small" onclick="restartTest()">테스트 다시 하기</button>
+                </div>
+            </div>
+
+            <!-- 결과 그룹 2 (10-12점) -->
+            <div id="diagnosis-group-2" class="diagnosis-group">
+                <div class="header-row">
+                    <h4>테스트 결과</h4>
+                    <button class="close-btn" onclick="showMainPage()">×</button>
+                </div>
+                <div class="header-column">
+                    <h2>내 마음의 점수</h2>
+                    <div class="logo">☁️</div>
+                    <div class="result-card">
+                        <h1><strong id="score-2">0점</strong></h1>
+                        <h3 class="highlight-message">심각하진 않지만 우울증일 가능성이 높아요</h3>
+                        <p id="message">마음도 감기처럼 아플 수 있는 거 알고 있으신가요?<br/>정신건강 또한 주기적으로 체크가 필요해요</p>
+                    </div>
+                    <button class="action-btn small" onclick="restartTest()">테스트 다시 하기</button>
+                </div>
+            </div>
+
+            <!-- 결과 그룹 3 (13점 이상) -->
+            <div id="diagnosis-group-3" class="diagnosis-group">
+                <div class="header-row">
+                    <h4>테스트 결과</h4>
+                    <button class="close-btn" onclick="showMainPage()">×</button>
+                </div>
+                <div class="header-column">
+                    <h2>내 마음의 점수</h2>
+                    <div class="logo">⛈️</div>
+                    <div class="result-card">
+                        <h1><strong id="score-3">0점</strong></h1>
+                        <h3 class="highlight-message">많이 힘든 상태에요! 병원을 꼭 방문해 보세요</h3>
+                        <p id="message">전문가와의 상담은 회복의 첫걸음이에요.<br/>가까운 상담센터나 병원을 꼭 방문해 보세요</p>
+                    </div>
+                    <button class="action-btn small" onclick="restartTest()">테스트 다시 하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
         <!-- 지도 페이지 (기존 유지) -->
         <div id="map-page" class="page hidden">
             <!-- 헤더 -->
@@ -166,14 +235,7 @@
 
             <!-- 위치 권한 요청 -->
             <div class="map-content">
-                <div id="location-permission" class="location-permission">
-                    <div class="permission-header">
-                        <span class="permission-icon">📍</span>
-                        <h3>위치 권한이 필요합니다</h3>
-                    </div>
-                    <p>근처 정신건강센터를 찾기 위해 현재 위치 정보가 필요합니다.</p>
-                    <button id="allow-location-btn" class="permission-btn">위치 권한 허용하기</button>
-                </div>
+
 
                 <!-- 센터 목록 -->
                 <div class="center-section">
@@ -214,88 +276,7 @@
             </nav>
         </div>
     </div>
- <!-- 진단 페이지 -->
-    <div id="diagnosis-page" class="page hidden">
-      <div id="diagnosis-group-1" class="diagnosis-group">
-        <div class="header-row">
-          <h4> 테스트 결과</h4>
-          <button id="close-diagnosis-btn" class="close-btn" aria-label="닫기"> x </button>
-        </div>
-        <div class="header-column">
-          <h2>내 마음의 점수</h2>
-          <div class="logo">🌤️</div>
-          <div id="diagnosis-result" class="hidden">
-            <div class="result-card" id="result-card">
-              <p id="result-message"></p>
-              <h1><strong>3점</strong></h1>
-              <h3 class="highlight-message">큰 우울 증상은 보이지 않아요!</h3>
-              <p id="message">
-                육아 과정에서 피곤하고 지치는 건 어쩔 수 없지만<br />
-                마음 건강도 체력처럼 꾸준히 돌보면 좋아요
-              </p>
-            </div>
-          </div>
-          <button id="result-retest-btn" class="action-btn small">
-            테스트 다시 하기
-          </button>
-        </div>
-      </div>
-
-      <!-- ... 진단그룹 2,3 ... -->
-           <!--테스트 결과 10~12
-
-            
-                <div id="diagnosis-group-2" class="diagnosis-group">
-                <div class="header-row">
-                    <h4>  테스트 결과</h4>
-                    <button id="close-diagnosis-btn" class="close-btn" aria-label="닫기"> x </button>
-                </div>
-                <div class="header-column">
-                    <h2>내 마음의 점수</h2>
-                    <div class="logo">☁️</div>
-                    <div id="diagnosis-result" class="hidden">
-                        <div class="result-card" id="result-card">
-                            <p id="result-message"></p>
-                            <h1><strong>9점</strong>
-                            <h3 class="highlight-message">심각하진 않지만 우울증일 가능성이 높아요</h3>  
-                            <p id="message">마음도 감기처럼 아플 수 있는 거 알고 있으신가요?<br>
-                                정신건강 또한 주기적으로 체크가 필요해요
-                            </p>  
-                        </div>
-                    </div>
-                    <button id="result-retest-btn" class="action-btn small">
-                        테스트 다시 하기
-                    </button>                    
-                </div> 
-                </div>
-
-                
-
-                <div id="diagnosis-group-3" class="diagnosis-group">
-                <div class="header-row">
-                    <h4>  테스트 결과</h4>
-                    <button id="close-diagnosis-btn" class="close-btn" aria-label="닫기"> x </button>
-                </div>
-                <div class="header-column">
-                    <h2>내 마음의 점수</h2>
-                    <div class="logo">⛈️</div>
-                    <div id="diagnosis-result" class="hidden">
-                        <div class="result-card" id="result-card">
-                            <p id="result-message"></p>
-                            <h1><strong>9점</strong>
-                            <h3 class="highlight-message">많이 힘든 상태에요! 병원을 꼭 방문해 보세요</h3>  
-                            <p id="message">전문가와의 상담은 회복의 첫걸음이에요.<br>
-                                가까운 상담센터나 병원을 꼭 방문해 보세요
-                            </p>  
-                        </div>
-                    </div>
-                    <button id="result-retest-btn" class="action-btn small">
-                        테스트 다시 하기
-                    </button>                    
-                </div> 
-                </div> -->
-    </div>
-
+    
     <!-- Mapbox JS -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <!-- 메인 JavaScript -->
