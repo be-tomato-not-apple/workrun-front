@@ -1,84 +1,93 @@
 // 진단 테스트 질문 데이터
 const questions = [
     {
-        question: "기분이 가라앉거나, 우울하거나, 희망이 없다고 느꼈다",
+        question: "Q1.<br> 예전과 비교했을 때,<br>일상에서 재미있는 일에 웃을 수 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "네, 예전과 비슷했어요", value: 0 },
+            { text: "예전보다 줄은 것 같아요", value: 1 },
+            { text: "예전보다 많이 줄었어요", value: 2 },
+            { text: "전혀 웃을 수 없었어요", value: 3 }
         ]
     },
     {
-        question: "평소 하던 일에 대한 흥미가 없어지거나 즐거움을 느끼지 못했다",
+        question: "Q2.<br> 최근 즐거운 일을<br>기대하는 마음이 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "네, 예전과 비슷했어요", value: 0 },
+            { text: "예전보다 줄은 것 같아요", value: 1 },
+            { text: "예전보다 많이 줄었어요", value: 2 },
+            { text: "아뇨, 거의 그렇지 않았어요", value: 3 }
         ]
     },
     {
-        question: "잠들기 어렵거나 자꾸 깨어났다, 또는 너무 많이 잤다",
+        question: "Q3.<br> 일이 잘못될 때<br>괜히 나 자신을 탓하곤 했나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀 그렇지 않았어요", value: 0 },
+            { text: "거의 그렇지 않았어요", value: 1 },
+            { text: "가끔 그랬어요", value: 2 },
+            { text: "자주 그랬어요", value: 3 }
         ]
     },
     {
-        question: "피곤하다고 느끼거나 기력이 없었다",
+        question: "Q4.<br> 특별한 이유가 없어도<br>불안하거나 걱정된 적이 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀 그렇지 않았어요", value: 0 },
+            { text: "거의 그렇지 않았어요", value: 1 },
+            { text: "가끔 그랬어요", value: 2 },
+            { text: "자주 그랬어요", value: 3 }
         ]
     },
     {
-        question: "식욕이 없거나 너무 많이 먹었다",
+        question: "Q5.<br> 특별한 이유 없이<br>두렵거나 무서운 적이 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀 없었어요", value: 0 },
+            { text: "거의 없었어요", value: 1 },
+            { text: "가끔 있었어요", value: 2 },
+            { text: "자주 있었어요", value: 3 }
         ]
     },
     {
-        question: "자신이 실패자라고 느끼거나, 자신 또는 가족을 실망시켰다고 느꼈다",
+        question: "Q6.<br> 요즘 들어 일이나 해야 할 일들이<br>버겁게 느껴졌나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀요, 평소처럼 잘 해냈어요", value: 0 },
+            { text: "아니요, 대체로 해낼 수 있었어요", value: 1 },
+            { text: "가끔요, 평소처럼은 힘들었어요", value: 2 },
+            { text: "자주요, 해야 할 일을 하기 어려웠어요", value: 3 }
         ]
     },
     {
-        question: "신문을 읽거나 TV를 보는 것과 같은 일상적인 일에 집중하기가 어려웠다",
+        question: "Q7.<br> 너무 불행하다고 생각해서<br>잠을 잘 이루지 못한 적이 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀 없었어요", value: 0 },
+            { text: "가끔 있었어요", value: 1 },
+            { text: "거의 없었어요", value: 2 },
+            { text: "자주 있었어요", value: 3 }
         ]
     },
     {
-        question: "다른 사람들이 눈치챌 정도로 평소보다 말과 행동이 느려졌다",
+        question: "Q8.<br> 슬프거나 비참하다고<br>느낀 적이 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀 없었어요", value: 0 },
+            { text: "거의 없었어요", value: 1 },
+            { text: "가끔 있었어요", value: 2 },
+            { text: "자주 있었어요", value: 3 }
         ]
     },
     {
-        question: "차라리 죽는 것이 낫겠다고 생각하거나 자신을 해칠 생각을 했다",
+        question: "Q9.<br> 불행하다고 느껴<br>눈물이 난 적이 있었나요?",
         options: [
-            { text: "전혀 그렇지 않다", value: 0 },
-            { text: "며칠 동안 그랬다", value: 1 },
-            { text: "일주일 이상 그랬다", value: 2 },
-            { text: "거의 매일 그랬다", value: 3 }
+            { text: "전혀 없었어요", value: 0 },
+            { text: "가끔 있었어요", value: 1 },
+            { text: "자주 있었어요", value: 2 },
+            { text: "거의 매일 그랬어요", value: 3 }
+        ]
+    },
+    {
+        question: "Q10.<br> 스스로를 해치고 싶은<br>생각이 든 적 있었나요?",
+        options: [
+            { text: "전혀 없었어요", value: 0 },
+            { text: "거의 없었어요", value: 1 },
+            { text: "가끔 있었어요", value: 2 },
+            { text: "자주 있었어요", value: 3 }
         ]
     }
 ];
@@ -91,6 +100,7 @@ class MentalHealthApp {
         this.map = null;
         this.centers = [];
         this.markers = [];
+        this.locationPermissionGranted = false;
         
         // 진단 테스트 관련 상태
         this.currentQuestion = 0;
@@ -110,9 +120,38 @@ class MentalHealthApp {
             this.loadMockData();
             this.initializeMap();
             this.setupImageErrorHandling();
+            this.checkLocationPermission();
             console.log('앱 초기화 완료');
         } catch (error) {
             console.error('초기화 중 오류:', error);
+        }
+    }
+
+    // 위치 권한 확인
+    checkLocationPermission() {
+        if (navigator.permissions) {
+            navigator.permissions.query({name: 'geolocation'}).then((permission) => {
+                if (permission.state === 'granted') {
+                    this.locationPermissionGranted = true;
+                    this.hideLocationConsent();
+                } else {
+                    // 위치정보 카드가 확실히 보이도록 강제 표시
+                    this.showLocationConsentCard();
+                }
+            });
+        } else {
+            // 권한 API가 없으면 카드 표시
+            this.showLocationConsentCard();
+        }
+    }
+
+    // 위치정보 카드 강제 표시
+    showLocationConsentCard() {
+        const consentCard = document.getElementById('location-consent-card');
+        if (consentCard) {
+            consentCard.style.display = 'block';
+            consentCard.classList.remove('hidden');
+            console.log('위치정보 카드 표시됨');
         }
     }
 
@@ -158,14 +197,15 @@ class MentalHealthApp {
                 }
             });
 
-            // 스크롤 이벤트 리스너 추가
-            this.setupScrollNavigation();
-
-            // 위치 관련
-            const allowLocationBtn = document.getElementById('allow-location-btn');
-            const locationBtn = document.getElementById('location-btn');
+            // 메인 페이지 위치정보 동의
+            const mainLocationBtn = document.getElementById('main-location-btn');
+            const skipLocationBtn = document.getElementById('skip-location-btn');
             
-            if (allowLocationBtn) allowLocationBtn.addEventListener('click', () => this.requestLocation());
+            if (mainLocationBtn) mainLocationBtn.addEventListener('click', () => this.requestLocationFromMain());
+            if (skipLocationBtn) skipLocationBtn.addEventListener('click', () => this.hideLocationConsent());
+
+            // 위치 관련 (지도 페이지)
+            const locationBtn = document.getElementById('location-btn');
             if (locationBtn) locationBtn.addEventListener('click', () => this.requestLocation());
 
             // 응급 버튼
@@ -180,14 +220,14 @@ class MentalHealthApp {
                 searchInput.addEventListener('keypress', (e) => {
                     if (e.key === 'Enter') {
                         e.preventDefault();
-                        this.handleSearch(e.target.value);
+                        this.goToSearchPage(e.target.value);
                     }
                 });
             }
             
             if (searchBtn) searchBtn.addEventListener('click', () => {
                 const query = searchInput?.value || '';
-                this.handleSearch(query);
+                this.goToSearchPage(query);
             });
 
             // 필터 버튼들
@@ -205,6 +245,12 @@ class MentalHealthApp {
                 card.addEventListener('click', (e) => this.handleWelfareCardClick(e));
             });
 
+            // 더 많은 복지 보기 버튼
+            const viewMoreBtn = document.getElementById('view-more-welfare');
+            if (viewMoreBtn) {
+                viewMoreBtn.addEventListener('click', () => this.goToSearchPage());
+            }
+
             // 홈 네비게이션 버튼 (첫 번째 nav-item)
             const homeNavBtn = document.querySelector('.nav-item');
             if (homeNavBtn) {
@@ -217,218 +263,261 @@ class MentalHealthApp {
         }
     }
 
-    // 스크롤 네비게이션 설정
-    setupScrollNavigation() {
-        const mainPage = document.getElementById('main-page');
-        
-        if (!mainPage) return;
-
-        let isScrolling = false;
-        let scrollTimeout;
-
-        // 일반 스크롤 이벤트 핸들러 (Intersection Observer 보조용)
-        const handleScroll = () => {
-            if (this.currentPage !== 'main') return;
-            
-            const welfareSection = document.querySelector('.welfare-section');
-            if (!welfareSection) return;
-
-            const rect = welfareSection.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
-            
-            // 복지 섹션이 화면의 절반 이상을 덮을 때
-            const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-            const visibilityRatio = visibleHeight / viewportHeight;
-            
-            if (visibilityRatio >= 0.5 && !isScrolling) {
-                this.snapToWelfareSection();
-                isScrolling = true;
-                
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    isScrolling = false;
-                }, 800);
-            }
-        };
-
-        // 휠 이벤트 핸들러 (빠른 스크롤 감지)
-        const handleWheel = (e) => {
-            if (this.currentPage !== 'main') return;
-            if (isScrolling) return;
-
-            const delta = e.deltaY;
-            
-            // 아래로 스크롤할 때
-            if (delta > 0) {
-                const welfareSection = document.querySelector('.welfare-section');
-                if (!welfareSection) return;
-
-                const rect = welfareSection.getBoundingClientRect();
-                
-                // 복지 섹션이 보이기 시작했을 때 스냅
-                if (rect.top < window.innerHeight && rect.top > 0) {
-                    e.preventDefault();
-                    this.snapToWelfareSection();
-                    isScrolling = true;
-                    
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        isScrolling = false;
-                    }, 800);
-                }
-            }
-        };
-
-        // 터치 이벤트 핸들러 (모바일)
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        const handleTouchStart = (e) => {
-            if (this.currentPage !== 'main') return;
-            touchStartY = e.changedTouches[0].screenY;
-        };
-
-        const handleTouchEnd = (e) => {
-            if (this.currentPage !== 'main') return;
-            if (isScrolling) return;
-
-            touchEndY = e.changedTouches[0].screenY;
-            const deltaY = touchStartY - touchEndY;
-
-            // 위로 스와이프 (아래로 스크롤)할 때
-            if (deltaY > 50) {
-                const welfareSection = document.querySelector('.welfare-section');
-                if (!welfareSection) return;
-
-                const rect = welfareSection.getBoundingClientRect();
-                
-                // 복지 섹션이 보이기 시작했을 때 스냅
-                if (rect.top < window.innerHeight) {
-                    this.snapToWelfareSection();
-                    isScrolling = true;
-                    
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        isScrolling = false;
-                    }, 800);
-                }
-            }
-        };
-
-        // Intersection Observer로 정밀한 가시성 감지
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: [0.1, 0.3, 0.5, 0.7, 0.9] // 여러 임계점에서 감지
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            if (this.currentPage !== 'main') return;
-            if (isScrolling) return;
-
-            entries.forEach(entry => {
-                // 50% 이상 보일 때 스냅
-                if (entry.intersectionRatio >= 0.5) {
-                    this.snapToWelfareSection();
-                    isScrolling = true;
-                    
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        isScrolling = false;
-                    }, 800);
-                }
-            });
-        }, observerOptions);
-
-        const welfareSection = document.querySelector('.welfare-section');
-        if (welfareSection) {
-            observer.observe(welfareSection);
+    // ========== 위치 관련 메서드 ==========
+    
+    // 메인 페이지에서 위치 권한 요청
+    async requestLocationFromMain() {
+        if (!navigator.geolocation) {
+            alert('이 브라우저는 위치 서비스를 지원하지 않습니다.');
+            return;
         }
 
-        // 이벤트 리스너 등록
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('wheel', handleWheel, { passive: false });
-        mainPage.addEventListener('touchstart', handleTouchStart, { passive: true });
-        mainPage.addEventListener('touchend', handleTouchEnd, { passive: true });
+        try {
+            this.showMainLocationLoading();
 
-        // 키보드 네비게이션
-        document.addEventListener('keydown', (e) => {
-            if (this.currentPage !== 'main') return;
-            if (isScrolling) return;
+            const position = await new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(resolve, reject, {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 60000
+                });
+            });
 
-            if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-                e.preventDefault();
-                this.snapToWelfareSection();
-                isScrolling = true;
-                
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    isScrolling = false;
-                }, 800);
+            this.userLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+                accuracy: position.coords.accuracy
+            };
+
+            this.locationPermissionGranted = true;
+            this.showLocationSuccess();
+            this.calculateDistances();
+
+        } catch (error) {
+            this.handleMainLocationError(error);
+        }
+    }
+
+    showMainLocationLoading() {
+        const btn = document.getElementById('main-location-btn');
+        if (btn) {
+            btn.innerHTML = '<div class="spinner"></div>위치 확인 중...';
+            btn.disabled = true;
+        }
+    }
+
+    showLocationSuccess() {
+        const consentSection = document.querySelector('.location-consent-section');
+        if (consentSection) {
+            consentSection.classList.add('completed');
+            consentSection.innerHTML = `
+                <div class="consent-card">
+                    <div class="consent-icon">✅</div>
+                    <h3>위치 권한이 허용되었습니다</h3>
+                    <p>이제 주변 정신건강센터를 찾을 수 있습니다</p>
+                </div>
+            `;
+            
+            // 3초 후 자동으로 숨기기
+            setTimeout(() => {
+                this.hideLocationConsent();
+            }, 3000);
+        }
+    }
+
+    handleMainLocationError(error) {
+        let message = '위치 정보를 가져올 수 없습니다.';
+        
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                message = '위치 권한이 거부되었습니다. 브라우저 설정에서 위치 권한을 허용해주세요.';
+                break;
+            case error.POSITION_UNAVAILABLE:
+                message = '위치 정보를 사용할 수 없습니다.';
+                break;
+            case error.TIMEOUT:
+                message = '위치 정보 요청 시간이 초과되었습니다.';
+                break;
+        }
+        
+        alert(message);
+        
+        const btn = document.getElementById('main-location-btn');
+        if (btn) {
+            btn.innerHTML = '위치 권한 허용하기';
+            btn.disabled = false;
+        }
+    }
+
+    hideLocationConsent() {
+        const consentSection = document.querySelector('.location-consent-section');
+        if (consentSection) {
+            consentSection.classList.add('hidden');
+        }
+    }
+
+    // ========== 검색/복지 관련 메서드 ==========
+    
+    // search.html로 이동
+    goToSearchPage(query = '') {
+        let url = 'search.html';
+        if (query.trim()) {
+            url += `?q=${encodeURIComponent(query)}`;
+        }
+        window.location.href = url;
+    }
+
+    handleFilterClick(event) {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        const category = event.target.dataset.category || 'family';
+        this.goToSearchPage(`category=${category}`);
+    }
+
+    handleBookmarkClick(event) {
+        event.stopPropagation();
+        const btn = event.currentTarget;
+        
+        if (btn.classList.contains('active')) {
+            btn.classList.remove('active');
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            `;
+        } else {
+            btn.classList.add('active');
+            btn.innerHTML = `
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" fill="currentColor"/>
+                </svg>
+            `;
+        }
+        
+        this.toggleBookmark(btn.closest('.welfare-card'));
+    }
+
+    handleWelfareCardClick(event) {
+        if (!event.target.closest('.bookmark-card-btn')) {
+            const card = event.currentTarget;
+            const title = card.dataset.title || card.querySelector('h3').textContent;
+            const encodedTitle = encodeURIComponent(title);
+            this.goToSearchPage(`detail=${encodedTitle}`);
+        }
+    }
+
+    toggleBookmark(card) {
+        if (!card) return;
+        
+        const title = card.dataset.title || card.querySelector('h3').textContent;
+        console.log('북마크 토글:', title);
+        
+        try {
+            const bookmarks = JSON.parse(localStorage.getItem('welfare_bookmarks') || '[]');
+            const index = bookmarks.indexOf(title);
+            
+            if (index > -1) {
+                bookmarks.splice(index, 1);
+            } else {
+                bookmarks.push(title);
             }
-        });
-
-        // 클린업 함수 저장 (필요시 이벤트 제거용)
-        this.scrollCleanup = () => {
-            observer.disconnect();
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('wheel', handleWheel);
-            mainPage.removeEventListener('touchstart', handleTouchStart);
-            mainPage.removeEventListener('touchend', handleTouchEnd);
-        };
-    }
-
-    // 복지 섹션으로 스냅 (부드러운 이동)
-    snapToWelfareSection() {
-        const welfareSection = document.querySelector('.welfare-section');
-        
-        if (!welfareSection) return;
-
-        // 부드러운 스크롤 애니메이션
-        welfareSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'nearest'
-        });
-
-        // 시각적 피드백 추가
-        this.addScrollFeedback();
-    }
-
-    // 스크롤 피드백 효과
-    addScrollFeedback() {
-        const welfareSection = document.querySelector('.welfare-section');
-        
-        if (!welfareSection) return;
-
-        // 하이라이트 효과
-        welfareSection.style.transition = 'box-shadow 0.3s ease';
-        welfareSection.style.boxShadow = '0 0 20px rgba(255, 107, 107, 0.3)';
-        
-        // 효과 제거
-        setTimeout(() => {
-            welfareSection.style.boxShadow = '';
-        }, 1500);
+            
+            localStorage.setItem('welfare_bookmarks', JSON.stringify(bookmarks));
+        } catch (error) {
+            console.error('북마크 저장 실패:', error);
+        }
     }
 
     // ========== 진단 테스트 관련 메서드 ==========
+    // 기존 showDiagnosisPage() 메서드를 다음과 같이 수정
+showDiagnosisPage() {
+    document.getElementById('main-page').classList.add('hidden');
+    document.getElementById('map-page').classList.add('hidden');
+    document.getElementById('diagnosis-page').classList.remove('hidden');
     
-    showDiagnosisPage() {
-        document.getElementById('main-page').classList.add('hidden');
-        document.getElementById('map-page').classList.add('hidden');
-        document.getElementById('diagnosis-page').classList.remove('hidden');
+    // 애니메이션 시퀀스 시작
+    this.startAnimationSequence();
+    
+    this.currentPage = 'diagnosis';
+    this.updateNavigation();
+    
+    // 스크롤을 맨 위로
+    document.getElementById('diagnosis-page').scrollTop = 0;
+}
+
+// 새로 추가할 메서드들
+startAnimationSequence() {
+    // 애니메이션 컨테이너 표시
+    document.getElementById('animation-container').classList.add('active');
+    
+    // 모든 진단 그룹 숨기기
+    document.querySelectorAll('.diagnosis-group').forEach(group => {
+        group.classList.remove('active');
+    });
+    
+    // 첫 번째 애니메이션 시작
+    this.showFirstAnimation();
+}
+
+showFirstAnimation() {
+    // 모든 애니메이션 콘텐츠 숨기기
+    document.querySelectorAll('.animation-content').forEach(content => {
+        content.classList.remove('active', 'fade-in-up', 'fade-out-down');
+    });
+    
+    // 첫 번째 콘텐츠 표시
+    setTimeout(() => {
+        document.getElementById('animation-content-1').classList.add('active');
+    }, 100);
+    
+    // 이벤트 리스너 설정
+    this.setupAnimationEvents();
+    
+    // 4초 후 자동으로 두 번째 애니메이션으로 전환
+    setTimeout(() => {
+        this.showSecondAnimation();
+    }, 4000);
+}
+
+showSecondAnimation() {
+    // 첫 번째 콘텐츠 페이드아웃
+    const firstContent = document.getElementById('animation-content-1');
+    const secondContent = document.getElementById('animation-content-2');
+    
+    firstContent.classList.remove('active');
+    
+    // 0.6초 후 두 번째 콘텐츠 페이드인
+    setTimeout(() => {
+        secondContent.classList.add('active');
         
-        // 진단 페이지를 표시할 때 바로 테스트 시작
+        // 4초 후 자동으로 테스트 시작
+        setTimeout(() => {
+            this.startDiagnosisTest();
+        }, 4000);
+    }, 600);
+}
+
+startDiagnosisTest() {
+    // 애니메이션 컨테이너 페이드아웃
+    document.getElementById('animation-container').classList.remove('active');
+    
+    // 0.5초 후 테스트 시작
+    setTimeout(() => {
         this.resetTest();
         this.showTestSection();
-        
-        this.currentPage = 'diagnosis';
-        this.updateNavigation();
-        
-        // 스크롤을 맨 위로
-        document.getElementById('diagnosis-page').scrollTop = 0;
-    }
+    }, 500);
+}
 
+setupAnimationEvents() {
+    // 닫기 버튼
+    const closeBtn = document.getElementById('animation-close');
+    if (closeBtn) {
+        closeBtn.onclick = () => this.showMainPage();
+    }
+}
     resetTest() {
         this.currentQuestion = 0;
         this.answers = [];
@@ -471,7 +560,7 @@ class MentalHealthApp {
 
         container.innerHTML = `
             <div class="question">
-                <h3>Q${this.currentQuestion + 1}. ${question.question}</h3>
+                <h3>${question.question}</h3>
                 <div class="options">
                     ${question.options.map((option, index) => `
                         <div class="option" data-value="${option.value}">
@@ -787,7 +876,7 @@ class MentalHealthApp {
         `;
     }
 
-    // ========== 위치 관련 메서드 ==========
+    // ========== 위치 관련 메서드 (지도 페이지용) ==========
     
     async requestLocation() {
         if (!navigator.geolocation) {
@@ -812,7 +901,6 @@ class MentalHealthApp {
                 accuracy: position.coords.accuracy
             };
 
-            this.hideLocationPermission();
             this.calculateDistances();
             this.updateCenterList();
             
@@ -826,17 +914,9 @@ class MentalHealthApp {
     }
 
     showLocationLoading() {
-        const btn = document.getElementById('allow-location-btn');
+        const btn = document.getElementById('location-btn');
         if (btn) {
-            btn.innerHTML = '<div class="spinner"></div>위치 확인 중...';
-            btn.disabled = true;
-        }
-    }
-
-    hideLocationPermission() {
-        const permissionDiv = document.getElementById('location-permission');
-        if (permissionDiv) {
-            permissionDiv.style.display = 'none';
+            btn.innerHTML = '⏳';
         }
     }
 
@@ -857,10 +937,9 @@ class MentalHealthApp {
         
         alert(message);
         
-        const btn = document.getElementById('allow-location-btn');
+        const btn = document.getElementById('location-btn');
         if (btn) {
-            btn.innerHTML = '위치 권한 허용하기';
-            btn.disabled = false;
+            btn.innerHTML = '📍';
         }
     }
 
@@ -987,194 +1066,6 @@ class MentalHealthApp {
         if (confirm('응급상황입니다. 전문 상담사와 연결하거나 응급실로 안내해드릴까요?\n\n' + emergencyNumbers.join('\n'))) {
             window.location.href = 'tel:1577-0199';
         }
-    }
-
-    handleSearch(query) {
-        console.log('검색어:', query);
-        // search.html로 이동
-        if (query.trim()) {
-            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
-        } else {
-            // 검색어가 없으면 기본 search.html로
-            window.location.href = 'search.html';
-        }
-    }
-
-    handleFilterClick(event) {
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        
-        const filterType = event.target.textContent;
-        console.log('선택된 필터:', filterType);
-        
-        // search.html로 카테고리와 함께 이동
-        let category = 'family';
-        
-        if (filterType === '가구상황') {
-            category = 'family';
-        } else if (filterType === '관심주제') {
-            category = 'interest';
-        }
-        
-        window.location.href = `search.html?category=${category}`;
-    }
-
-    handleBookmarkClick(event) {
-        event.stopPropagation();
-        const btn = event.currentTarget;
-        
-        if (btn.classList.contains('active')) {
-            btn.classList.remove('active');
-            btn.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-            `;
-        } else {
-            btn.classList.add('active');
-            btn.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" fill="currentColor"/>
-                </svg>
-            `;
-        }
-        
-        this.toggleBookmark(btn.closest('.welfare-card'));
-    }
-
-    handleWelfareCardClick(event) {
-        if (!event.target.closest('.bookmark-card-btn')) {
-            const card = event.currentTarget;
-            const title = card.querySelector('h3').textContent;
-            console.log('선택된 복지:', title);
-            
-            // 복지 상세 페이지로 이동 (search.html에 쿼리 포함)
-            const encodedTitle = encodeURIComponent(title);
-            window.location.href = `search.html?detail=${encodedTitle}`;
-        }
-    }
-
-    showFamilyWelfare() {
-        const cards = document.querySelector('.welfare-cards');
-        if (cards) {
-            cards.innerHTML = `
-                <div class="welfare-card">
-                    <div class="card-content">
-                        <h3>신혼부부 주택지원 프로그램</h3>
-                        <p class="card-subtitle">국토교통부</p>
-                        <div class="card-tags">
-                            <span class="tag">신혼부부</span>
-                            <span class="tag">주거지원</span>
-                            <span class="tag">저금리</span>
-                        </div>
-                    </div>
-                    <button class="bookmark-card-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="welfare-card">
-                    <div class="card-content">
-                        <h3>육아휴직 급여 지원</h3>
-                        <p class="card-subtitle">고용노동부</p>
-                        <div class="card-tags">
-                            <span class="tag">육아</span>
-                            <span class="tag">급여지원</span>
-                            <span class="tag">부모</span>
-                        </div>
-                    </div>
-                    <button class="bookmark-card-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </button>
-                </div>
-            `;
-            this.setupCardEventListeners();
-        }
-    }
-
-    showTopicWelfare() {
-        const cards = document.querySelector('.welfare-cards');
-        if (cards) {
-            cards.innerHTML = `
-                <div class="welfare-card">
-                    <div class="card-content">
-                        <h3>산후우울증 상담 지원</h3>
-                        <p class="card-subtitle">보건복지부</p>
-                        <div class="card-tags">
-                            <span class="tag">정신건강</span>
-                            <span class="tag">상담</span>
-                            <span class="tag">산후우울</span>
-                        </div>
-                    </div>
-                    <button class="bookmark-card-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="welfare-card">
-                    <div class="card-content">
-                        <h3>아동 심리상담 지원사업</h3>
-                        <p class="card-subtitle">보건복지부</p>
-                        <div class="card-tags">
-                            <span class="tag">아동</span>
-                            <span class="tag">심리상담</span>
-                            <span class="tag">정신건강</span>
-                        </div>
-                    </div>
-                    <button class="bookmark-card-btn">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
-                        </svg>
-                    </button>
-                </div>
-            `;
-            this.setupCardEventListeners();
-        }
-    }
-
-    setupCardEventListeners() {
-        document.querySelectorAll('.bookmark-card-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => this.handleBookmarkClick(e));
-        });
-
-        document.querySelectorAll('.welfare-card').forEach(card => {
-            card.addEventListener('click', (e) => this.handleWelfareCardClick(e));
-        });
-    }
-
-    toggleBookmark(card) {
-        if (!card) return;
-        
-        const title = card.querySelector('h3').textContent;
-        console.log('북마크 토글:', title);
-        
-        try {
-            const bookmarks = JSON.parse(localStorage.getItem('welfare_bookmarks') || '[]');
-            const index = bookmarks.indexOf(title);
-            
-            if (index > -1) {
-                bookmarks.splice(index, 1);
-            } else {
-                bookmarks.push(title);
-            }
-            
-            localStorage.setItem('welfare_bookmarks', JSON.stringify(bookmarks));
-        } catch (error) {
-            console.error('북마크 저장 실패:', error);
-        }
-    }
-
-    showWelfareDetails(card) {
-        if (!card) return;
-        
-        const title = card.querySelector('h3').textContent;
-        alert(`${title}\n\n상세 정보를 확인하시겠습니까?\n\n(실제 앱에서는 상세 페이지로 이동합니다)`);
     }
 
     setupImageErrorHandling() {

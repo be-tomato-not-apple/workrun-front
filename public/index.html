@@ -16,7 +16,6 @@
             <!-- 헤더 -->
              
             <main class="main-content">
-                <section class="main-section">
             <header class="main-header">
                 <div class="header-content">
                     <div class="logo">
@@ -29,43 +28,44 @@
                     </button>
                 </div>
             </header>
-
-                <!-- 메인 메시지 섹션 -->
-                <section class="hero-section">
-                    <div class="hero-illustration">
-                        <div class="illustration-container">
-                            <!-- 하트와 문서 일러스트 -->
-                            <div class="heart-icon">
-                                <img src="source/heart.svg" alt="하트 아이콘">
-                            </div>
-                            <div class="document-icon">
-                                <img src="source/cilpboard.svg" alt="문서 아이콘">
+             
+                <section class="main-section">
+                    <!-- 메인 메시지 섹션 -->
+                    <section class="hero-section">
+                        <div class="hero-illustration">
+                            <div class="illustration-container">
+                                <!-- 하트와 문서 일러스트 -->
+                                <div class="heart-icon">
+                                    <img src="source/heart.svg" alt="하트 아이콘">
+                                </div>
+                                <div class="document-icon">
+                                    <img src="source/cilpboard.svg" alt="문서 아이콘">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="hero-text">
-                        <h1>아이만 챙겼던 나날<br>당신의 마음은 어떤가요?</h1>
-                        <p>간단한 문항으로 지금 내 마음건강을 체크해보세요</p>
-                    </div>
+                        
+                        <div class="hero-text">
+                            <h1>아이만 챙겼던 나날<br>당신의 마음은 어떤가요?</h1>
+                            <p>간단한 문항으로 지금 내 마음건강을 체크해보세요</p>
+                        </div>
 
-                    <button id="test-btn" class="test-button">
-                        테스트 하러가기
-                    </button>
-                </section>
-            </section>
-            <section class="location-consent-section">
-                <div id="location-permission" class="location-permission">
-                    <div class="permission-header">
-                        <span class="permission-icon">📍</span>
-                        <h3>위치 권한이 필요합니다</h3>
-                    </div>
+                        <button id="test-btn" class="test-button">
+                            테스트 하러가기
+                        </button>
                     </section>
-                    <p>근처 정신건강센터를 찾기 위해 현재 위치 정보가 필요합니다.</p>
-                    <button id="allow-location-btn" class="permission-btn">위치 권한 허용하기</button>
-                </div>
+                </section>
+                
                 <!-- 복지 찾기 섹션 -->
                 <section class="welfare-section">
+                    <!-- 위치정보 동의 카드 (복지 섹션 내 최상단) -->
+                    <div class="location-consent-card" id="location-consent-card">
+                        <div class="consent-icon">📍</div>
+                        <h3>주변 정신건강센터를 찾아드려요</h3>
+                        <p>위치 권한을 허용하시면 가까운 상담센터를 추천해드립니다</p>
+                        <button id="main-location-btn" class="consent-btn">위치 권한 허용하기</button>
+                        <button id="skip-location-btn" class="skip-btn">나중에 설정하기</button>
+                    </div>
+
                     <div class="section-header">
                         <h2>내게 맞는 복지 찾기</h2>
                         <p>나를 위한, 우리 가족을 위한 정부복지정책을 찾아드려요</p>
@@ -76,20 +76,20 @@
                         <div class="search-input-wrapper">
                             <input type="text" placeholder="검색어를 입력해주세요" class="search-input">
                             <button class="search-button">
-                               <!-- <img src="assets/images/icons/search.svg" alt="검색" width="20" height="20"> --> 
+                               🔍
                             </button>
                         </div>
                     </div>
 
                     <!-- 필터 버튼들 -->
                     <div class="filter-buttons">
-                        <button class="filter-btn active">가구상황</button>
-                        <button class="filter-btn">관심주제</button>
+                        <button class="filter-btn active" data-category="family">가구상황</button>
+                        <button class="filter-btn" data-category="interest">관심주제</button>
                     </div>
 
                     <!-- 복지 카드들 -->
                     <div class="welfare-cards">
-                        <div class="welfare-card">
+                        <div class="welfare-card" data-title="심장질환 및 희귀난치성질환 아동청소년 지원사업">
                             <div class="card-content">
                                 <h3>심장질환 및 희귀난치성질환 아동청소년 지원사업</h3>
                                 <p class="card-subtitle">사회복지법인 밀알복지재단</p>
@@ -108,7 +108,29 @@
                                 </svg>
                             </button>
                         </div>
-<!-- 더 많은 복지 보기 버튼 -->
+
+                        <div class="welfare-card" data-title="육아휴직 급여 지원">
+                            <div class="card-content">
+                                <h3>육아휴직 급여 지원</h3>
+                                <p class="card-subtitle">고용노동부</p>
+                                
+                                <div class="card-tags">
+                                    <span class="tag">육아</span>
+                                    <span class="tag">급여지원</span>
+                                    <span class="tag">부모</span>
+                                    <span class="tag">생활지원</span>
+                                </div>
+                            </div>
+                            
+                            <button class="bookmark-card-btn">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M16 18L10 13L4 18V4C4 2.9 4.9 2 6 2H14C15.1 2 16 2.9 16 4V18Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 더 많은 복지 보기 버튼 -->
                     <div class="more-welfare">
                         <button id="view-more-welfare" class="more-btn">더 많은 복지 보기 →</button>
                     </div>
@@ -117,29 +139,67 @@
 
             <!-- 하단 네비게이션 -->
             <nav class="bottom-nav">
-      <button class="nav-item active">
-        <span class="nav-icon">🏠</span>
-        <span class="nav-label">홈</span>
-      </button>
-      <button class="nav-item" id="nav-map">
-        <span class="nav-icon">🗺️</span>
-        <span class="nav-label">지도</span>
-      </button>
-      <button id="nav-diagnosis" class="nav-item">
-        <span class="nav-icon">📝</span>
-        <span class="nav-label">진단</span>
-      </button>
-      <button class="nav-item">
-        <span class="nav-icon">⚙️</span>
-        <span class="nav-label">설정</span>
-      </button>
-    </nav>
-
+                <button class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span class="nav-label">홈</span>
+                </button>
+                <button class="nav-item" id="nav-map">
+                    <span class="nav-icon">🗺️</span>
+                    <span class="nav-label">지도</span>
+                </button>
+                <button id="nav-diagnosis" class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">진단</span>
+                </button>
+                <button class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span class="nav-label">설정</span>
+                </button>
+            </nav>
         </div>
-        <!--진단 페이지--> 
+        
+        <!--진단 페이지-->
         <div id="diagnosis-page" class="page hidden">
+            <!-- 애니메이션 컨테이너 (고정 배경 + 닫기 버튼) -->
+            <div id="animation-container" class="animation-container">
+                <div class="animation-header">
+                    <button class="animation-close-btn" id="animation-close">×</button>
+                </div>
+                
+                <!-- 첫 번째 애니메이션 콘텐츠 -->
+                 <div class="animation-content-wrapper">
+                <div id="animation-content-1" class="animation-content active">
+                    <h2>육아스트레스는</h2>
+                    <h2><span class="highlight-red">6배 더 우울증을 유발</span>하는 것</h2>
+                    <h2>알고계셨나요?</h2>
+                    
+                    <div class="chart-svg-container">
+                        <img src="source/onboarding.svg" width="300" height="200" viewBox="0 0 300 200" class="chart-svg">
+                    </div>
+                    
+                    <p class="animation-subtitle">※ 해당 검사는 육아스트레스를 측정하는 전문 테스트인 에딘버러 건사를 기반으로 제작했어요</p>
+                    
+                    <button class="animation-next-btn" id="next-to-2">내 마음 진단하기 🌡️</button>
+                </div>
+
+                <!-- 두 번째 애니메이션 콘텐츠 -->
+                <div id="animation-content-2" class="animation-content">
+                    <h2>아이를 돌보는 것도 중요하지만</h2>
+                    <h2><span class="highlight-red">하루 단 5분</span>이라도</h2>
+                    <h2>내 마음을 돌보면 어떨까요?</h2>
+                    
+                    <div class="heart-svg-container">
+                        <img src="source/onboarding img 2.svg" width="300" height="200" viewBox="0 0 300 200" class="chart-svg">
+                    </div>
+                    
+                    <p class="animation-subtitle">※ 해당 검사는 육아스트레스를 측정하는 전문 테스트인 에딘버러 건사를 기반으로 제작했어요</p>
+                    
+                    <button class="animation-next-btn" id="start-test">내 마음 진단하기 🌡️</button>
+                </div>
+            </div>
+</div>
             <!-- 진단 테스트 -->
-            <div id="diagnosis-test" class="diagnosis-group active">
+            <div id="diagnosis-test" class="diagnosis-group">
                 <div class="header-row">
                     <h4>마음건강 체크</h4>
                     <button id="close-test-btn" class="close-btn">×</button>
@@ -161,7 +221,7 @@
                 </div>
             </div>
 
-            <!-- 결과 그룹 1 (0-9점) -->
+            <!-- 결과 그룹들은 기존과 동일 -->
             <div id="diagnosis-group-1" class="diagnosis-group">
                 <div class="header-row">
                     <h4>테스트 결과</h4>
@@ -179,7 +239,6 @@
                 </div>
             </div>
 
-            <!-- 결과 그룹 2 (10-12점) -->
             <div id="diagnosis-group-2" class="diagnosis-group">
                 <div class="header-row">
                     <h4>테스트 결과</h4>
@@ -197,7 +256,6 @@
                 </div>
             </div>
 
-            <!-- 결과 그룹 3 (13점 이상) -->
             <div id="diagnosis-group-3" class="diagnosis-group">
                 <div class="header-row">
                     <h4>테스트 결과</h4>
@@ -215,7 +273,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
         <!-- 지도 페이지 (기존 유지) -->
         <div id="map-page" class="page hidden">
             <!-- 헤더 -->
@@ -233,10 +291,8 @@
                 <button id="location-btn" class="location-btn">📍</button>
             </div>
 
-            <!-- 위치 권한 요청 -->
+            <!-- 지도 페이지 콘텐츠 -->
             <div class="map-content">
-
-
                 <!-- 센터 목록 -->
                 <div class="center-section">
                     <h3 class="section-title">근처 센터 (<span id="center-count">0</span>개)</h3>
