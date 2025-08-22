@@ -38,11 +38,7 @@ class MentalHealthApp {
         window.location.href = 'search.html';
     }
 
-    showDiagnosisPage() {
-        // 자가진단 페이지로 이동
-        alert('육아우울증 자가진단을 시작합니다.\n\n(실제 앱에서는 진단 페이지로 이동합니다)');
-    }
-
+    
     // 이벤트 리스너 설정
     setupEventListeners() {
         try {
@@ -275,8 +271,22 @@ class MentalHealthApp {
         }
     }
 
+
+
     showDiagnosisPage() {
-        alert('자가진단 기능은 개발 중입니다.');
+        document.getElementById('main-page').classList.add('hidden');
+        document.getElementById('map-page').classList.add('hidden');
+        document.getElementById('diagnosis-page').classList.remove('hidden');
+        document.getElementById('diagnosis-page').scrollTop = 0;
+        // 상태 업데이트 (예: this.currentPage = 'diagnosis')
+        this.currentPage = 'diagnosis';
+
+        // 네비게이션 바 상태 업데이트 함수 호출 (있다면)
+        this.updateNavigation();
+        
+        const helpBox = document.querySelector('.help-call-floating-box');
+        if (helpBox) helpBox.style.display = 'flex';
+
     }
 
     // 네비게이션 상태 업데이트
