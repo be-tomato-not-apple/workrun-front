@@ -327,7 +327,7 @@ body {
     display: none;
     flex-direction: column;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
 }
 
 .animation-container.active {
@@ -406,7 +406,7 @@ body {
     text-align: center;
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.6s ease;
+    transition: all 0.3s ease;
 }
 
 .animation-content.active {
@@ -440,7 +440,7 @@ body {
     max-width: 100%;
     height: auto;
     filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-    animation: floatIn 1s ease-out 0.5s both;
+    animation: floatIn 0.5s ease-out 0.5s both;
 }
 
 /* 애니메이션 효과 */
@@ -721,43 +721,7 @@ body {
     border-radius: 3px;
 }
 
-.test-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
 
-.nav-btn {
-    background: #f5f5f5;
-    color: #666;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.nav-btn:hover {
-    background: #e0e0e0;
-}
-
-.nav-btn.primary {
-    background: linear-gradient(135deg, #FF6B6B, #FF5252);
-    color: white;
-}
-
-.nav-btn.primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(255,107,107,0.3);
-}
-
-.nav-btn:disabled {
-    background: #f0f0f0;
-    color: #ccc;
-    cursor: not-allowed;
-}
 
 /* 복지 섹션 */
 .welfare-section {
@@ -968,7 +932,7 @@ body {
     color: #FF6B6B;
 }
 
-/* 하단 네비게이션 */
+/* 하단 네비게이션 통일 스타일 */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -979,11 +943,14 @@ body {
     background: white;
     border-top: 1px solid #E8E8E8;
     display: flex;
-    justify-content: around;
+    justify-content: space-around;
     padding: 12px 0 8px;
     z-index: 1000;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    max-height: 90px;
 }
+
 
 .nav-item {
     background: none;
@@ -992,11 +959,12 @@ body {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 8px 4px;
     border-radius: 12px;
     transition: all 0.2s ease;
     color: #999;
     min-width: 60px;
+    text-decoration: none;
 }
 
 .nav-item.active {
@@ -1010,23 +978,43 @@ body {
 }
 
 .nav-icon {
-    width: 20px;
-    height: 20px;
+    font-size: 20px;
     margin-bottom: 4px;
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
+    display: block;
+    text-align: center;
 }
 
 .nav-item.active .nav-icon {
-    opacity: 1;
-    filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(329deg) brightness(119%) contrast(119%);
+    transform: scale(1.1);
 }
 
 .nav-label {
     font-size: 11px;
     font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
 }
 
+/* 반응형 */
+@media (max-width: 393px) {
+    .bottom-nav {
+        width: 100%;
+        left: 0;
+        transform: none;
+    }
+}
+
+/* 네비게이션 활성화 애니메이션 */
+@keyframes navActivate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.nav-item.active .nav-icon {
+    animation: navActivate 0.3s ease;
+}
 /* 지도 페이지 스타일 (기존 유지하되 색상 조정) */
 
 /* 지도 페이지 전체 레이아웃 수정 */
@@ -1335,22 +1323,8 @@ body {
     padding: 0 20px;
 }
 
-/* 지도 페이지 하단 네비게이션 수정 */
-#map-page .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 393px;
-    background: white;
-    border-top: 1px solid #E8E8E8;
-    display: flex;
-    justify-content: around;
-    padding: 12px 0 8px;
-    z-index: 1000;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
-}
+
+
 
 /* 전체 페이지 여백 초기화 */
 #map-page * {

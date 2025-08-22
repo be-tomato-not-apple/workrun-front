@@ -137,25 +137,6 @@
                 </section>
             </main>
 
-            <!-- 하단 네비게이션 -->
-            <nav class="bottom-nav">
-                <button class="nav-item active">
-                    <span class="nav-icon">🏠</span>
-                    <span class="nav-label">홈</span>
-                </button>
-                <button class="nav-item" id="nav-map">
-                    <span class="nav-icon">🗺️</span>
-                    <span class="nav-label">지도</span>
-                </button>
-                <button id="nav-diagnosis" class="nav-item">
-                    <span class="nav-icon">📝</span>
-                    <span class="nav-label">진단</span>
-                </button>
-                <button class="nav-item">
-                    <span class="nav-icon">⚙️</span>
-                    <span class="nav-label">설정</span>
-                </button>
-            </nav>
         </div>
         
         <!--진단 페이지-->
@@ -307,32 +288,31 @@
                 🚨 응급상황 도움받기
             </button>
 
-            <!-- 하단 네비게이션 -->
-            <nav class="bottom-nav">
-                <button class="nav-item" id="nav-home">
-                    <span class="nav-icon">🏠</span>
-                    <span class="nav-label">홈</span>
-                </button>
-                <button class="nav-item" id="nav-search">
-                    <span class="nav-icon">🔍</span>
-                    <span class="nav-label">검색</span>
-                </button>
-                <button class="nav-item active">
-                    <span class="nav-icon">🗺️</span>
-                    <span class="nav-label">센터찾기</span>
-                </button>
-                <button class="nav-item">
-                    <span class="nav-icon">📝</span>
-                    <span class="nav-label">자가진단</span>
-                </button>
-                <button class="nav-item">
-                    <span class="nav-icon">👤</span>
-                    <span class="nav-label">마이페이지</span>
-                </button>
-            </nav>
         </div>
     </div>
-    
+    <!-- 하단 네비게이션 (모든 페이지에서 공통으로 사용) -->
+<nav class="bottom-nav">
+    <button class="nav-item" id="nav-home" data-page="main">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">홈</span>
+    </button>
+    <button class="nav-item" id="nav-search" data-page="search">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">검색</span>
+    </button>
+    <button class="nav-item" id="nav-map" data-page="map">
+        <span class="nav-icon">🗺️</span>
+        <span class="nav-label">지도</span>
+    </button>
+    <button class="nav-item" id="nav-diagnosis" data-page="diagnosis">
+        <span class="nav-icon">📝</span>
+        <span class="nav-label">진단</span>
+    </button>
+    <button class="nav-item" id="nav-settings" data-page="settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">설정</span>
+    </button>
+</nav>
     <!-- Mapbox JS -->
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
     <!-- 메인 JavaScript -->

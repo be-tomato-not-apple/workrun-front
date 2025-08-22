@@ -321,7 +321,7 @@ class MentalHealthApp {
             // 3초 후 자동으로 숨기기
             setTimeout(() => {
                 this.hideLocationConsent();
-            }, 3000);
+            }, 1000);
         }
     }
 
@@ -479,7 +479,7 @@ showFirstAnimation() {
     // 4초 후 자동으로 두 번째 애니메이션으로 전환
     setTimeout(() => {
         this.showSecondAnimation();
-    }, 4000);
+    }, 2000);
 }
 
 showSecondAnimation() {
@@ -496,7 +496,7 @@ showSecondAnimation() {
         // 4초 후 자동으로 테스트 시작
         setTimeout(() => {
             this.startDiagnosisTest();
-        }, 4000);
+        }, 2000);
     }, 600);
 }
 
