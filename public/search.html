@@ -31,29 +31,21 @@
                     </div>
                 </div>
 
-                <!-- 카테고리 드롭다운 -->
+                <!-- 필터 버튼 -->
                 <div class="category-section">
-                    <div class="dropdown-container">
-                        <select id="category-select" class="category-dropdown">
-                            <option value="">가구상황</option>
-                            <option value="disability">장애인</option>
-                            <option value="low-income">저소득</option>
-                            <option value="multicultural">다문화/탈북민</option>
-                            <option value="single-parent">한부모/조손</option>
-                        </select>
+                    <div class="filter-section">
+                        <div class="filter-buttons">
+                            <button class="filter-btn" data-filter="category">
+                                관심주제
+                            </button>
+                            <button class="filter-btn" data-filter="region">
+                                가구상황
+                            </button>
+                        </div>
                         
-                        <select id="interest-select" class="category-dropdown">
-                            <option value="">관심주제</option>
-                            <option value="physical-health">신체건강</option>
-                            <option value="mental-health">정신건강</option>
-                            <option value="life-support">생활지원</option>
-                            <option value="finance">서민금융</option>
-                            <option value="pregnancy">임신/출산</option>
-                            <option value="education">교육</option>
-                            <option value="culture">문화/여가</option>
-                            <option value="job">일자리</option>
-                            <option value="housing">주거</option>
-                        </select>
+                        <!-- 선택된 필터들 -->
+                        <div class="selected-filters" id="selectedFilters">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,21 +86,21 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- 필터 바텀시트 (모바일용) -->
-        <div id="filter-modal" class="filter-modal hidden">
-            <div class="filter-modal-content">
-                <div class="filter-modal-header">
-                    <h3>필터</h3>
-                    <button id="filter-close" class="filter-close">✕</button>
-                </div>
-                <div class="filter-modal-body">
-                    <!-- 모바일 필터 내용 -->
-                </div>
-                <div class="filter-modal-footer">
-                    <button id="filter-reset" class="filter-reset-btn">초기화</button>
-                    <button id="filter-apply" class="filter-apply-btn">적용</button>
-                </div>
+    <!-- 필터 모달 -->
+    <div class="modal-overlay" id="filterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">가구상황 선택</h3>
+                <button class="modal-close" id="modalClose">✕</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 동적으로 생성될 옵션들 -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-reset" id="modalReset">초기화</button>
+                <button class="modal-apply" id="modalApply">적용하기</button>
             </div>
         </div>
     </div>

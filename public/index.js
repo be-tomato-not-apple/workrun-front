@@ -33,6 +33,11 @@ class MentalHealthApp {
         }
     }
 
+    // 검색 페이지로 이동
+    goToSearchPage() {
+        window.location.href = 'search.html';
+    }
+
     showDiagnosisPage() {
         // 자가진단 페이지로 이동
         alert('육아우울증 자가진단을 시작합니다.\n\n(실제 앱에서는 진단 페이지로 이동합니다)');
@@ -473,12 +478,15 @@ class MentalHealthApp {
         }
     }
 
-    // 새로운 이벤트 핸들러들
+    // 검색 기능
     handleSearch(query) {
         console.log('검색어:', query);
-        // 실제 검색 기능 구현
+        // 검색 페이지로 이동
         if (query.trim()) {
-            this.performWelfareSearch(query);
+            window.location.href = `search.html?q=${encodeURIComponent(query)}`;
+        } else {
+            // 검색어가 없으면 기본 검색 페이지로
+            window.location.href = 'search.html';
         }
     }
 
@@ -492,8 +500,17 @@ class MentalHealthApp {
         const filterType = event.target.textContent;
         console.log('선택된 필터:', filterType);
         
-        // 필터에 따른 복지 정보 업데이트
-        this.updateWelfareCards(filterType);
+        // 검색 페이지로 카테고리와 함께 이동
+        let category = 'family';
+        let filters = '';
+        
+        if (filterType === '가구상황') {
+            category = 'family';
+        } else if (filterType === '관심주제') {
+            category = 'interest';
+        }
+        
+        window.location.href = `search.html?category=${category}`;
     }
 
     handleBookmarkClick(event) {
